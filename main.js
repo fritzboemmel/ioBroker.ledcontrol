@@ -204,7 +204,7 @@ class Controller {
 	}
 
 	checkSerialConnection(callback) {
-		this.httpRequest('/api/status', (obj) => {
+		this.httpRequest('GET', '/api/status', '', (obj) => {
 			callback(obj.status);
 		})
 	}
