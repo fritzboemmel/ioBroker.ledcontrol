@@ -76,7 +76,7 @@ class Ledcontrol extends utils.Adapter {
 		});
 
 
-		this.setObjectNotExists('rgb_color', {
+		this.setObjectNotExists('balken.rgb_color', {
 			type: 'state',
 			common: {
 				name: 'rgb_color',
@@ -88,7 +88,7 @@ class Ledcontrol extends utils.Adapter {
 			native: {},
 		});
 		var colors = [0, 0, 0]
-		this.setState('rgb_color', {val: colors}, true);
+		this.setState('balken.rgb_color', {val: colors}, true);
 
 		this.setObjectNotExists('brightness_pct', {
 			type: 'state',
@@ -101,7 +101,7 @@ class Ledcontrol extends utils.Adapter {
 			},
 			native: {},
 		});
-		this.setState('brightness_pct', {val: 100}, true);
+		this.setState('balken.brightness_pct', {val: 100}, true);
 
 		this.setObjectNotExists('effect', {
 			type: 'state',

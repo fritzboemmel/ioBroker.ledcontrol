@@ -88,6 +88,14 @@
 			"native": {}
 		},
 		{
+			"_id": "balken",
+			"type": "lighting",
+			"common": {
+				"name": "Balken"
+			},
+			"native": {}
+		},
+		{
 			"_id": "info.connection",
 			"type": "state",
 			"common": {
