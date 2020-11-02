@@ -42,6 +42,8 @@ class Ledcontrol extends utils.Adapter {
 		this.log.info('ipadress: ' + this.config.ipadress);
 		this.log.info('username: ' + this.config.username);
 		this.log.info('port: ' + this.config.port);
+		var con = new Controller;
+		this.log.info(con.test(this.config.username));
 
 		/*
 		For every state in the system there has to be also an object of type state
@@ -157,6 +159,16 @@ class Ledcontrol extends utils.Adapter {
 	// 	}
 	// }
 
+}
+
+class Controller {
+	constructor() {
+
+	}
+
+	test(param1) {
+		return (param1);
+	}
 }
 
 // @ts-ignore parent is a valid property on module
