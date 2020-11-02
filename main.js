@@ -58,11 +58,12 @@ class Ledcontrol extends utils.Adapter {
 
 		this.controller.getStatus((status) => {
 			for(var i in status) {
+				// @ts-ignore
 				this.setObjectNotExists('status.' + i, {
 					type: 'state',
 					common: {
 						name: i,
-						type: String(typeof status[i]),
+						type: typeof status[i],
 						role: 'indicator',
 						read: true,
 						write: false,
@@ -72,6 +73,42 @@ class Ledcontrol extends utils.Adapter {
 
 				this.setState('status.' + i, status[i], true);
 			}
+		});
+
+		this.setObjectNotExists('color.red', {
+			type: 'state',
+			common: {
+				name: 'RED',
+				type: 'number',
+				role:'indicator',
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		this.setObjectNotExists('color.green', {
+			type: 'state',
+			common: {
+				name: 'GREEN',
+				type: 'number',
+				role:'indicator',
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+
+		this.setObjectNotExists('color.blue', {
+			type: 'state',
+			common: {
+				name: 'BLUE',
+				type: 'number',
+				role:'indicator',
+				read: true,
+				write: true,
+			},
+			native: {},
 		});
 
 		await this.setObjectNotExistsAsync('testVariable', {
@@ -84,6 +121,17 @@ class Ledcontrol extends utils.Adapter {
 				write: true,
 			},
 			native: {},
+		});
+
+
+		this.subscribeStates('color.red');
+		this.subscribeStates('color.green');
+		this.subscribeStates('color.blue');
+
+		this.on('stateChange', (obj) => {
+			if (obj == 'color.red') {
+				this.log.info('color red was changed.');
+			}
 		});
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -213,7 +261,7 @@ class Controller {
 				data += chunk;
 			});
 			res.on('end', () => {
-				callback(JSON.parse(data));
+				callback(data);
 			});
 		});
 
@@ -227,15 +275,22 @@ class Controller {
 
 	getStatus(callback) {
 		this.httpRequest('GET', '/api/status', '', (obj) => {
-			callback(obj);
+			callback(JSON.parse(obj));
 		});
 	}
 
 	checkSerialConnection(callback) {
 		this.httpRequest('GET', '/api/status', '', (obj) => {
-			callback(obj.serial);
-		})
+			callback(JSON.parse(obj).serial);
+		});
 	}
+
+	setColor(color=[255, 255, 255], callback) {
+        var c = {'red':color[0], 'green':color[1], 'blue':color[2]};
+        this.httpRequest('POST', '/api/full_color', JSON.stringify(c), (res) => {
+            callback(res);
+        });
+    }
 }
 
 // @ts-ignore parent is a valid property on module
