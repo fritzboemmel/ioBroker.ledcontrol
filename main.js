@@ -201,10 +201,13 @@ class Controller {
 		req.on('error', (e) => {
 			console.log('ERROR: ' + e.message);
 		});
+
+		req.write(sendData);
+		req.end();
 	}
 
 	checkSerialConnection(callback) {
-		this.httpRequest('/api/status', (obj) => {
+		this.httpRequest('GET', '/api/status', '', (obj) => {
 			callback(obj.serial);
 		})
 	}
