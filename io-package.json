@@ -72,6 +72,7 @@
 		]
 	},
 	"native": {
+		"ipadress": "192.168.1.100",
 		"username": "Benutzername",
 		"password": "Password",
 		"port": 1234
