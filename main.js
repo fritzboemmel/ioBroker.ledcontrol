@@ -179,30 +179,28 @@ class Controller {
 		var url = this.api + 'status'
 		let serial = false;
 
-		const options = {
-			hostname: this.ip,
-			port: this.port,
+		var options = {
+			host: this.ip,
 			path: '/api/status',
-			auth: this.user + ':' + this.pass,
-			method: 'GET',
-			headers: {
-			  'Content-Type': 'application/json'
-			}
-		  };
+			port: this.port,
+			auth: this.user + ':' + this.pass
+		};
 
-		const req = http.request(options, (res) => {
-			var data = '';
+		var req = http.get(options, (res) => {
+			var data = ''
+
 			res.on('data', (chunk) => {
 				data += chunk;
-			});
+			})
 			res.on('end', () => {
 				serial = JSON.parse(data).serial;
-			});
+				return serial;
+			})
 		});
 
-		req.on('error', (e) => {
-			console.error(`problem with request: ${e.message}`);
-		  });
+		req.on('error', function(e) {
+			console.log('ERROR: ' + e.message);
+		});
 
 		return serial;
 	}
