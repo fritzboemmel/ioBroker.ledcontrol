@@ -8,6 +8,7 @@
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
 const http = require('http');
+const { resetHistory } = require('sinon');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -170,28 +171,30 @@ class Controller {
 		this.user = user;
 		this.pass = pass;
 		this.port = port;
-		this.api = 'http://' + this.user + ':' + this.pass + '@' + this.ip + ':' + this.port + '/api/';
+		this.api = 'http://' + this.ip + ':' + this.port + '/api/';
 	}
 
 	checkSerialConnection() {
-		var auth = 'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64');
+		var authdata = this.user + ':' + this.pass;
+		var url = this.api + 'status'
 		let serial = false;
-		http.get(this.api + 'status', (resp) => {
+
+		http.request(url, {auth:authdata}, (resp) => {
 			let data = '';
-		  
+
 			// A chunk of data has been recieved.
 			resp.on('data', (chunk) => {
-			  data += chunk;
+				data += chunk;
 			});
-		  
+
 			// The whole response has been received. Print out the result.
 			resp.on('end', () => {
-			  serial = JSON.parse(data).serial;
+				serial = JSON.parse(data).serial;
 			});
-		  
-		  }).on("error", (err) => {
+		}).on("error", (err) => {
 			console.log("Error: " + err.message);
-		  });
+		});
+		
 
 		return serial;
 	}
