@@ -179,22 +179,30 @@ class Controller {
 		var url = this.api + 'status'
 		let serial = false;
 
-		http.request(url, {auth:authdata}, (resp) => {
-			let data = '';
+		const options = {
+			hostname: this.ip,
+			port: this.port,
+			path: '/api/status',
+			auth: this.user + ':' + this.pass,
+			method: 'GET',
+			headers: {
+			  'Content-Type': 'application/json'
+			}
+		  };
 
-			// A chunk of data has been recieved.
-			resp.on('data', (chunk) => {
+		const req = http.request(options, (res) => {
+			var data = '';
+			res.on('data', (chunk) => {
 				data += chunk;
 			});
-
-			// The whole response has been received. Print out the result.
-			resp.on('end', () => {
+			res.on('end', () => {
 				serial = JSON.parse(data).serial;
 			});
-		}).on("error", (err) => {
-			console.log("Error: " + err.message);
 		});
-		
+
+		req.on('error', (e) => {
+			console.error(`problem with request: ${e.message}`);
+		  });
 
 		return serial;
 	}
