@@ -74,45 +74,21 @@ class Ledcontrol extends utils.Adapter {
 				this.setState('status.' + i, status[i], true);
 			}
 		});
+		
 
-		this.setObjectNotExists('color.red', {
+		this.setObjectNotExists('rgb_color', {
 			type: 'state',
 			common: {
-				name: 'RED',
-				type: 'number',
-				role:'indicator',
+				name: 'color',
+				type: 'array',
+				role:'light',
 				read: true,
 				write: true,
 			},
 			native: {},
 		});
-		this.setState('color.red', 0);
-
-		this.setObjectNotExists('color.green', {
-			type: 'state',
-			common: {
-				name: 'GREEN',
-				type: 'number',
-				role:'indicator',
-				read: true,
-				write: true,
-			},
-			native: {},
-		});
-		this.setState('color.green', 0);
-
-		this.setObjectNotExists('color.blue', {
-			type: 'state',
-			common: {
-				name: 'BLUE',
-				type: 'number',
-				role:'indicator',
-				read: true,
-				write: true,
-			},
-			native: {},
-		});
-		this.setState('color.blue', 0);
+		var colors = [0, 0, 0]
+		this.setState('rgb_color', colors);
 
 		await this.setObjectNotExistsAsync('testVariable', {
 			type: 'state',
@@ -126,10 +102,6 @@ class Ledcontrol extends utils.Adapter {
 			native: {},
 		});
 
-
-		this.subscribeStates('color.red');
-		this.subscribeStates('color.green');
-		this.subscribeStates('color.blue');
 
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -205,9 +177,6 @@ class Ledcontrol extends utils.Adapter {
 		if (state) {
 			// The state was changed
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-			if (id == 'color.red') {
-				this.log.info('rot wurde geändert.');
-			}
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
