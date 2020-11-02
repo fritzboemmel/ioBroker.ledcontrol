@@ -101,7 +101,7 @@ class Ledcontrol extends utils.Adapter {
 			},
 			native: {},
 		});
-		this.setState('rgb_color', {val: 100}, true);
+		this.setState('brightness_pct', {val: 100}, true);
 
 		await this.setObjectNotExistsAsync('testVariable', {
 			type: 'state',
