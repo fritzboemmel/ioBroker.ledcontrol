@@ -1,0 +1,36 @@
+{
+	"cli": true,
+	"adapterName": "ledcontrol",
+	"title": "LED Control",
+	"description": "let's you control leds",
+	"expert": "yes",
+	"features": [
+		"adapter"
+	],
+	"adminFeatures": [
+		"custom"
+	],
+	"type": "lighting",
+	"startMode": "daemon",
+	"connectionType": "local",
+	"dataSource": "push",
+	"connectionIndicator": "yes",
+	"language": "JavaScript",
+	"tools": [
+		"ESLint",
+		"type checking",
+		"devcontainer"
+	],
+	"indentation": "Tab",
+	"quotes": "single",
+	"es6class": "yes",
+	"authorName": "fritzboemmel",
+	"authorGithub": "fritzboemmel",
+	"authorEmail": "jan.hokamp@gmail.com",
+	"gitRemoteProtocol": "HTTPS",
+	"gitCommit": "yes",
+	"license": "MIT License",
+	"ci": "gh-actions",
+	"dependabot": "no",
+	"creatorVersion": "1.29.1"
+}

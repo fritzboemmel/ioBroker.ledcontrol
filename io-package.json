@@ -1,0 +1,102 @@
+{
+	"common": {
+		"name": "ledcontrol",
+		"version": "0.0.1",
+		"news": {
+			"0.0.1": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "LED Control",
+		"titleLang": {
+			"en": "LED Control",
+			"de": "LED-Steuerung",
+			"ru": "Светодиодный контроль",
+			"pt": "Controle de LED",
+			"nl": "LED-bediening",
+			"fr": "Contrôle LED",
+			"it": "Controllo LED",
+			"es": "Control de LED",
+			"pl": "Sterowanie diodami LED",
+			"zh-cn": "LED控制"
+		},
+		"desc": {
+			"en": "let's you control leds",
+			"de": "Lassen Sie uns LEDs steuern",
+			"ru": "давай тебе контролировать светодиоды",
+			"pt": "vamos controlar leds",
+			"nl": "laten we je leds bedienen",
+			"fr": "vous permet de contrôler les leds",
+			"it": "ti permette di controllare i LED",
+			"es": "te permite controlar los leds",
+			"pl": "pozwala kontrolować diody led",
+			"zh-cn": "让您控制LED"
+		},
+		"authors": [
+			"fritzboemmel <jan.hokamp@gmail.com>"
+		],
+		"keywords": [
+			"ioBroker",
+			"template",
+			"Smart Home",
+			"home automation"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"icon": "ledcontrol.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/fritzboemmel/ioBroker.ledcontrol/master/admin/ledcontrol.png",
+		"readme": "https://github.com/fritzboemmel/ioBroker.ledcontrol/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "lighting",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "push",
+		"materialize": true,
+		"supportCustoms": true,
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "Device or service connected",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
+}
