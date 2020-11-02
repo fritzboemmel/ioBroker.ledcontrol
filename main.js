@@ -134,6 +134,8 @@ class Ledcontrol extends utils.Adapter {
 			}
 		});
 
+		this.
+
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
 		this.subscribeStates('testVariable');
 		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
@@ -207,6 +209,9 @@ class Ledcontrol extends utils.Adapter {
 		if (state) {
 			// The state was changed
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			if (id == 'color.*') {
+				this.log.info('eine farbe wurde geändert.');
+			}
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
