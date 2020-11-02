@@ -90,7 +90,7 @@ class Ledcontrol extends utils.Adapter {
 		var colors = [0, 0, 0]
 		this.setState('balken.rgb_color', {val: colors}, true);
 
-		this.setObjectNotExists('brightness_pct', {
+		this.setObjectNotExists('balken.brightness_pct', {
 			type: 'state',
 			common: {
 				name: 'brightness_pct',
@@ -103,7 +103,7 @@ class Ledcontrol extends utils.Adapter {
 		});
 		this.setState('balken.brightness_pct', {val: 100}, true);
 
-		this.setObjectNotExists('effect', {
+		this.setObjectNotExists('balken.effect', {
 			type: 'state',
 			common: {
 				name: 'effect',
@@ -114,7 +114,7 @@ class Ledcontrol extends utils.Adapter {
 			},
 			native: {},
 		});
-		this.setState('effect', {val: 'none'}, true);
+		this.setState('balken.effect', {val: 'none'}, true);
 
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.

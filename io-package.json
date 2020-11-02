@@ -89,7 +89,7 @@
 		},
 		{
 			"_id": "balken",
-			"type": "lighting",
+			"type": "channel",
 			"common": {
 				"name": "Balken"
 			},
