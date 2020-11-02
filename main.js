@@ -74,7 +74,7 @@ class Ledcontrol extends utils.Adapter {
 				this.setState('status.' + i, status[i], true);
 			}
 		});
-		
+
 
 		this.setObjectNotExists('rgb_color', {
 			type: 'state',
@@ -88,7 +88,7 @@ class Ledcontrol extends utils.Adapter {
 			native: {},
 		});
 		var colors = [0, 0, 0]
-		this.setState('rgb_color', colors);
+		this.setState('rgb_color', colors, true);
 
 		await this.setObjectNotExistsAsync('testVariable', {
 			type: 'state',
