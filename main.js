@@ -70,9 +70,7 @@ class Ledcontrol extends utils.Adapter {
 					native: {},
 				});
 			}
-		})
-
-		await this.setObjectNotExistsAsync()
+		});
 
 		await this.setObjectNotExistsAsync('testVariable', {
 			type: 'state',
