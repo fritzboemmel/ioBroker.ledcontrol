@@ -76,7 +76,7 @@ class Ledcontrol extends utils.Adapter {
 		});
 
 
-		this.setObjectNotExists('rgb_color', {
+		this.setObjectNotExists('light.rgb_color', {
 			type: 'state',
 			common: {
 				name: 'rgb_color',
@@ -88,9 +88,9 @@ class Ledcontrol extends utils.Adapter {
 			native: {},
 		});
 		var colors = [0, 0, 0]
-		this.setState('rgb_color', {val: colors}, true);
+		this.setState('light.rgb_color', {val: colors}, true);
 
-		this.setObjectNotExists('brightness_pct', {
+		this.setObjectNotExists('light.brightness_pct', {
 			type: 'state',
 			common: {
 				name: 'brightness_pct',
@@ -101,24 +101,23 @@ class Ledcontrol extends utils.Adapter {
 			},
 			native: {},
 		});
-		this.setState('brightness_pct', {val: 100}, true);
+		this.setState('light.brightness_pct', {val: 100}, true);
 
-		await this.setObjectNotExistsAsync('testVariable', {
+		this.setObjectNotExists('light.effect', {
 			type: 'state',
 			common: {
-				name: 'testVariable',
-				type: 'boolean',
-				role: 'indicator',
+				name: 'effect',
+				type: 'string',
+				role:'light',
 				read: true,
 				write: true,
 			},
 			native: {},
 		});
-
+		this.setState('light.effect', {val: 'none'}, true);
 
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-		this.subscribeStates('testVariable');
 		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
 		// this.subscribeStates('lights.*');
 		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
