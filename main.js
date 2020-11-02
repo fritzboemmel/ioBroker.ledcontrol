@@ -46,8 +46,7 @@ class Ledcontrol extends utils.Adapter {
 		this.log.info('port: ' + this.config.port);
 
 		this.controller = new Controller(this.config.ipadress, this.config.username, this.config.password, this.config.port);
-
-		this.setState('info.serialConnection', this.controller.checkSerialConnection(), true);
+		this.setState('info.serialConnection', Boolean(this.controller.checkSerialConnection()), true);
 
 		/*
 		For every state in the system there has to be also an object of type state
