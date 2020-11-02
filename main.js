@@ -84,6 +84,9 @@ class Ledcontrol extends utils.Adapter {
 				role:'switch',
 				read: true,
 				write: true,
+				smartName: {
+					smartType: 'LIGHT'
+				}
 			},
 			native: {},
 		});
