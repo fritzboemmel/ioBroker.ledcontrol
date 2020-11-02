@@ -87,7 +87,7 @@ class Ledcontrol extends utils.Adapter {
 			},
 			native: {},
 		});
-		this.setState('balken.rgb_color', {val: false}, true);
+		this.setState('balken.state', {val: false}, true);
 
 		this.setObjectNotExists('balken.rgb_color', {
 			type: 'state',
