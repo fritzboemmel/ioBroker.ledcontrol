@@ -69,6 +69,8 @@ class Ledcontrol extends utils.Adapter {
 					},
 					native: {},
 				});
+
+				this.setState('status.' + i, status[i], true);
 			}
 		});
 
