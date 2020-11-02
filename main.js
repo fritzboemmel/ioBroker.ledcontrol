@@ -79,7 +79,7 @@ class Ledcontrol extends utils.Adapter {
 		this.setObjectNotExists('rgb_color', {
 			type: 'state',
 			common: {
-				name: 'color',
+				name: 'rgb_color',
 				type: 'array',
 				role:'light',
 				read: true,
@@ -89,6 +89,19 @@ class Ledcontrol extends utils.Adapter {
 		});
 		var colors = [0, 0, 0]
 		this.setState('rgb_color', {val: colors}, true);
+
+		this.setObjectNotExists('brightness_pct', {
+			type: 'state',
+			common: {
+				name: 'brightness_pct',
+				type: 'number',
+				role:'light',
+				read: true,
+				write: true,
+			},
+			native: {},
+		});
+		this.setState('rgb_color', {val: 100}, true);
 
 		await this.setObjectNotExistsAsync('testVariable', {
 			type: 'state',
