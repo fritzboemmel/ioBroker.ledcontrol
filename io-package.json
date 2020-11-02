@@ -99,19 +99,6 @@
 				"def": false
 			},
 			"native": {}
-		},
-		{
-			"_id": "info.serialConnection",
-			"type": "state",
-			"common": {
-				"role": "indicator.serialConnected",
-				"name": "Serial connected",
-				"type": "boolean",
-				"read": true,
-				"write": false,
-				"def": false
-			},
-			"native": {}
 		}
 	]
 }

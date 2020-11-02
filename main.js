@@ -46,8 +46,9 @@ class Ledcontrol extends utils.Adapter {
 		this.log.info('port: ' + this.config.port);
 
 		this.controller = new Controller(this.config.ipadress, this.config.username, this.config.password, this.config.port);
-		this.setState('info.serialConnection', Boolean(this.controller.checkSerialConnection()), true);
-		this.setState('info.connection', true, true);
+		this.controller.checkSerialConnection((serial) => {
+			this.setState('info.connection', serial, true);
+		});
 
 		/*
 		For every state in the system there has to be also an object of type state
@@ -174,7 +175,7 @@ class Controller {
 		this.api = 'http://' + this.ip + ':' + this.port + '/api/';
 	}
 
-	checkSerialConnection() {
+	checkSerialConnection(callback) {
 		var authdata = this.user + ':' + this.pass;
 		var url = this.api + 'status'
 		let serial = false;
@@ -194,17 +195,13 @@ class Controller {
 			})
 			res.on('end', () => {
 				serial = JSON.parse(data).serial;
-				return serial;
+				callback(serial);
 			})
 		});
 
 		req.on('error', function(e) {
 			console.log('ERROR: ' + e.message);
 		});
-
-		setTimeout(() => {
-			return serial;
-		}, 10000);
 	}
 }
 
