@@ -7,6 +7,7 @@
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
 const utils = require('@iobroker/adapter-core');
+const http = require('http');
 
 // Load your modules here, e.g.:
 // const fs = require("fs");
@@ -42,8 +43,10 @@ class Ledcontrol extends utils.Adapter {
 		this.log.info('ipadress: ' + this.config.ipadress);
 		this.log.info('username: ' + this.config.username);
 		this.log.info('port: ' + this.config.port);
-		var con = new Controller;
-		this.log.info(con.test(this.config.username));
+
+		this.controller = new Controller(this.config.ipadress, this.config.username, this.config.password, this.config.port);
+
+		this.setState('info.serialConnection', this.controller.checkSerialConnection(), true);
 
 		/*
 		For every state in the system there has to be also an object of type state
@@ -162,12 +165,35 @@ class Ledcontrol extends utils.Adapter {
 }
 
 class Controller {
-	constructor() {
-
+	constructor(ip, user, pass, port) {
+		this.ip = ip;
+		this.user = user;
+		this.pass = pass;
+		this.port = port;
+		this.api = 'http://' + this.user + ':' + this.pass + '@' + this.ip + ':' + this.port + '/api/';
 	}
 
-	test(param1) {
-		return (param1);
+	checkSerialConnection() {
+		var auth = 'Basic ' + Buffer.from(this.user + ':' + this.pass).toString('base64');
+		let serial = false;
+		http.get(this.api + 'status', (resp) => {
+			let data = '';
+		  
+			// A chunk of data has been recieved.
+			resp.on('data', (chunk) => {
+			  data += chunk;
+			});
+		  
+			// The whole response has been received. Print out the result.
+			resp.on('end', () => {
+			  serial = JSON.parse(data).serial;
+			});
+		  
+		  }).on("error", (err) => {
+			console.log("Error: " + err.message);
+		  });
+
+		return serial;
 	}
 }
 
