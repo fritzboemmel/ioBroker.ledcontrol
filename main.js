@@ -175,33 +175,38 @@ class Controller {
 		this.api = 'http://' + this.ip + ':' + this.port + '/api/';
 	}
 
-	checkSerialConnection(callback) {
-		var authdata = this.user + ':' + this.pass;
-		var url = this.api + 'status'
-		let serial = false;
-
+	httpRequest(method='GET', path, sendData='', callback) {
 		var options = {
 			host: this.ip,
-			path: '/api/status',
+			path: path,
+			method: method,
 			port: this.port,
-			auth: this.user + ':' + this.pass
+			auth: this.user + ':' + this.pass,
+			headers: {
+				'Content-Type': 'application/json'
+			}
 		};
 
-		var req = http.get(options, (res) => {
-			var data = ''
+		var req = http.request(options, (res) => {
+			var data = '';
 
 			res.on('data', (chunk) => {
 				data += chunk;
-			})
+			});
 			res.on('end', () => {
-				serial = JSON.parse(data).serial;
-				callback(serial);
-			})
+				callback(JSON.parse(data));
+			});
 		});
 
-		req.on('error', function(e) {
+		req.on('error', (e) => {
 			console.log('ERROR: ' + e.message);
 		});
+	}
+
+	checkSerialConnection(callback) {
+		this.httpRequest('/api/status', (obj) => {
+			callback(obj.status);
+		})
 	}
 }
 
