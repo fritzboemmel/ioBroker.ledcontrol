@@ -202,7 +202,9 @@ class Controller {
 			console.log('ERROR: ' + e.message);
 		});
 
-		return serial;
+		setTimeout(() => {
+			return serial;
+		}, 10000);
 	}
 }
 
