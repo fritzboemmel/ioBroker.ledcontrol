@@ -55,6 +55,25 @@ class Ledcontrol extends utils.Adapter {
 		Here a simple template for a boolean variable named "testVariable"
 		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
 		*/
+
+		this.controller.getStatus((status) => {
+			for(var i in status) {
+				this.setObjectNotExists('status.' + i, {
+					type: 'state',
+					common: {
+						name: i,
+						type: String(typeof status[i]),
+						role: 'indicator',
+						read: true,
+						write: false,
+					},
+					native: {},
+				});
+			}
+		})
+
+		await this.setObjectNotExistsAsync()
+
 		await this.setObjectNotExistsAsync('testVariable', {
 			type: 'state',
 			common: {
@@ -204,6 +223,12 @@ class Controller {
 
 		req.write(sendData);
 		req.end();
+	}
+
+	getStatus(callback) {
+		this.httpRequest('GET', '/api/status', '', (obj) => {
+			callback(obj);
+		});
 	}
 
 	checkSerialConnection(callback) {
