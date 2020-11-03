@@ -77,60 +77,65 @@ class Ledcontrol extends utils.Adapter {
 
 
 		
-		this.setObjectNotExists('balken.state', {
+		this.setObjectNotExists('balken.brightness', {
 			type: 'state',
 			common: {
-				name: 'state',
+				name: 'brightness',
 				type: 'boolean',
-				role:'switch',
+				role:'dimmer.level',
+				min: 0,
+				max: 100,
 				read: true,
 				write: true,
 			},
 			native: {},
 		});
-		this.setState('balken.state', {val: false}, true);
+		this.setState('balken.brightness', {val: 100}, true);
 
-		this.setObjectNotExists('balken.rgb_color', {
+		this.setObjectNotExists('balken.r', {
 			type: 'state',
 			common: {
-				name: 'rgb_color',
-				type: 'array',
-				role:'light',
+				name: 'r',
+				type: 'boolean',
+				role:'level.color.red',
+				min: 0,
+				max: 255,
 				read: true,
 				write: true,
 			},
 			native: {},
 		});
-		var colors = [0, 0, 0]
-		this.setState('balken.rgb_color', {val: colors}, true);
+		this.setState('balken.r', {val: 255}, true);
 
-		this.setObjectNotExists('balken.brightness_pct', {
+		this.setObjectNotExists('balken.g', {
 			type: 'state',
 			common: {
-				name: 'brightness_pct',
-				type: 'number',
-				role:'light',
+				name: 'g',
+				type: 'boolean',
+				role:'level.color.green',
+				min: 0,
+				max: 255,
 				read: true,
 				write: true,
 			},
 			native: {},
 		});
-		this.setState('balken.brightness_pct', {val: 100}, true);
+		this.setState('balken.g', {val: 255}, true);
 
-		this.setObjectNotExists('balken.effect', {
+		this.setObjectNotExists('balken.b', {
 			type: 'state',
 			common: {
-				name: 'effect',
-				type: 'string',
-				role:'light',
+				name: 'b',
+				type: 'boolean',
+				role:'level.color.blue',
+				min: 0,
+				max: 255,
 				read: true,
 				write: true,
 			},
 			native: {},
 		});
-		this.setState('balken.effect', {val: 'none'}, true);
-
-		this.subscribeStates('balken.*');
+		this.setState('balken.b', {val: 255}, true);
 
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -205,10 +210,6 @@ class Ledcontrol extends utils.Adapter {
 		if (state) {
 			// The state was changed
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
-			var tmp = id.split('.');
-			if (tmp[3] == 'state') {
-				this.log.info('the state was changed');
-			}
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
