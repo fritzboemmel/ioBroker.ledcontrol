@@ -129,7 +129,7 @@ class Ledcontrol extends utils.Adapter {
 		});
 		this.setState('balken.effect', {val: 'none'}, true);
 
-		this.subscribeObjects('balken.state');
+		this.subscribeStates('balken.state');
 
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
