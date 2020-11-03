@@ -85,7 +85,7 @@ class Ledcontrol extends utils.Adapter {
 				read: true,
 				write: true,
 				alias: {
-					id: 'light.balken'
+					id: 'balken'
 				},
 				smartName: {
 					smartType: 'light'
@@ -106,7 +106,7 @@ class Ledcontrol extends utils.Adapter {
 				read: true,
 				write: true,
 				alias: {
-					id: 'light.balken'
+					id: 'balken'
 				},
 				smartName: {
 					smartType: 'light'
@@ -127,7 +127,7 @@ class Ledcontrol extends utils.Adapter {
 				read: true,
 				write: true,
 				alias: {
-					id: 'light.balken'
+					id: 'balken'
 				},
 			},
 			native: {},
@@ -145,7 +145,7 @@ class Ledcontrol extends utils.Adapter {
 				read: true,
 				write: true,
 				alias: {
-					id: 'light.balken'
+					id: 'balken'
 				},
 			},
 			native: {},
@@ -163,7 +163,7 @@ class Ledcontrol extends utils.Adapter {
 				read: true,
 				write: true,
 				alias: {
-					id: 'light.balken'
+					id: 'balken'
 				},
 			},
 			native: {},
