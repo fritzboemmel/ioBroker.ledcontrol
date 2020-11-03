@@ -84,8 +84,11 @@ class Ledcontrol extends utils.Adapter {
 				role:'switch',
 				read: true,
 				write: true,
+				alias: {
+					id: 'light.balken'
+				},
 				smartName: {
-					smartType: "light"
+					smartType: 'light'
 				}
 			},
 			native: {},
@@ -102,8 +105,11 @@ class Ledcontrol extends utils.Adapter {
 				max: 100,
 				read: true,
 				write: true,
+				alias: {
+					id: 'light.balken'
+				},
 				smartName: {
-					smartType: "light"
+					smartType: 'light'
 				}
 			},
 			native: {},
@@ -120,6 +126,9 @@ class Ledcontrol extends utils.Adapter {
 				max: 255,
 				read: true,
 				write: true,
+				alias: {
+					id: 'light.balken'
+				},
 			},
 			native: {},
 		});
@@ -135,6 +144,9 @@ class Ledcontrol extends utils.Adapter {
 				max: 255,
 				read: true,
 				write: true,
+				alias: {
+					id: 'light.balken'
+				},
 			},
 			native: {},
 		});
@@ -150,6 +162,9 @@ class Ledcontrol extends utils.Adapter {
 				max: 255,
 				read: true,
 				write: true,
+				alias: {
+					id: 'light.balken'
+				},
 			},
 			native: {},
 		});
