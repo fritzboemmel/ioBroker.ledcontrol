@@ -79,7 +79,7 @@ class Ledcontrol extends utils.Adapter {
 		this.setObjectNotExists('balken.on', {
 			type: 'state',
 			common: {
-				name: 'on',
+				name: 'balken.on',
 				type: 'boolean',
 				role:'switch',
 				read: true,
@@ -98,7 +98,7 @@ class Ledcontrol extends utils.Adapter {
 		this.setObjectNotExists('balken.brightness', {
 			type: 'state',
 			common: {
-				name: 'brightness',
+				name: 'balken.brightness',
 				type: 'number',
 				role:'dimmer.level',
 				min: 0,
@@ -119,7 +119,7 @@ class Ledcontrol extends utils.Adapter {
 		this.setObjectNotExists('balken.r', {
 			type: 'state',
 			common: {
-				name: 'r',
+				name: 'balken.r',
 				type: 'number',
 				role:'level.color.red',
 				min: 0,
@@ -137,7 +137,7 @@ class Ledcontrol extends utils.Adapter {
 		this.setObjectNotExists('balken.g', {
 			type: 'state',
 			common: {
-				name: 'g',
+				name: 'balken.g',
 				type: 'number',
 				role:'level.color.green',
 				min: 0,
@@ -155,7 +155,7 @@ class Ledcontrol extends utils.Adapter {
 		this.setObjectNotExists('balken.b', {
 			type: 'state',
 			common: {
-				name: 'b',
+				name: 'balken.b',
 				type: 'number',
 				role:'level.color.blue',
 				min: 0,
