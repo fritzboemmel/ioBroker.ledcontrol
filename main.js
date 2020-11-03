@@ -75,6 +75,7 @@ class Ledcontrol extends utils.Adapter {
 			}
 		});
 
+
 		
 		this.setObjectNotExists('balken.state', {
 			type: 'state',
@@ -204,6 +205,10 @@ class Ledcontrol extends utils.Adapter {
 		if (state) {
 			// The state was changed
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			var tmp = id.split('.');
+			if (tmp[3] == 'state') {
+				this.log.info('the state was changed');
+			}
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
