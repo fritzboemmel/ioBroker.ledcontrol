@@ -110,16 +110,7 @@
 			"native": {}
 		},
 		{
-			"_id": "0",
-			"type": "channel",
-			"common": {
-				"role": "light.color",
-				"name": "balken"
-			},
-			"native": {}
-		},
-		{
-			"_id": "balken.0.on",
+			"_id": "balken.on",
 			"type": "state",
 			"common": {
 				"role": "switch.light",
@@ -132,7 +123,7 @@
 			"native": {}
 		},
 		{
-			"_id": "balken.0.bri",
+			"_id": "balken.bri",
 			"type": "state",
 			"common": {
 				"role": "level.dimmer",
@@ -147,7 +138,7 @@
 			"native": {}
 		},
 		{
-			"_id": "balken.0.r",
+			"_id": "balken.r",
 			"type": "state",
 			"common": {
 				"role": "level.color.red",
@@ -162,7 +153,7 @@
 			"native": {}
 		},
 		{
-			"_id": "balken.0.g",
+			"_id": "balken.g",
 			"type": "state",
 			"common": {
 				"role": "level.color.green",
@@ -177,7 +168,7 @@
 			"native": {}
 		},
 		{
-			"_id": "balken.0.b",
+			"_id": "balken.b",
 			"type": "state",
 			"common": {
 				"role": "level.color.blue",
