@@ -133,7 +133,7 @@
 				"max": 100,
 				"read": true,
 				"write": true,
-				"def": false
+				"def": 100
 			},
 			"native": {}
 		},
@@ -148,7 +148,7 @@
 				"max": 255,
 				"read": true,
 				"write": true,
-				"def": false
+				"def": 255
 			},
 			"native": {}
 		},
@@ -163,7 +163,7 @@
 				"max": 255,
 				"read": true,
 				"write": true,
-				"def": false
+				"def": 255
 			},
 			"native": {}
 		},
@@ -178,7 +178,7 @@
 				"max": 255,
 				"read": true,
 				"write": true,
-				"def": false
+				"def": 255
 			},
 			"native": {}
 		}
