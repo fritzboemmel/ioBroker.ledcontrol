@@ -81,7 +81,7 @@ class Ledcontrol extends utils.Adapter {
 			common: {
 				name: 'on',
 				type: 'boolean',
-				role:'dimmer.level',
+				role:'switch',
 				read: true,
 				write: true,
 				smartName: {
@@ -90,7 +90,7 @@ class Ledcontrol extends utils.Adapter {
 			},
 			native: {},
 		});
-		this.setState('balken.brightness', {val: false}, true);
+		this.setState('balken.on', {val: false}, true);
 		
 		this.setObjectNotExists('balken.brightness', {
 			type: 'state',
