@@ -89,7 +89,7 @@
 		},
 		{
 			"_id": "balken",
-			"type": "channel",
+			"type": "lighting",
 			"common": {
 				"name": "Balken",
 				"room": "Dachgeschoss"
