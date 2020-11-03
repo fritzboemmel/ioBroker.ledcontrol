@@ -76,10 +76,10 @@ class Ledcontrol extends utils.Adapter {
 		});
 
 		
-		this.setObjectNotExists('balken.STATE', {
+		this.setObjectNotExists('balken.state', {
 			type: 'state',
 			common: {
-				name: 'STATE',
+				name: 'state',
 				type: 'boolean',
 				role:'switch',
 				read: true,
@@ -87,7 +87,7 @@ class Ledcontrol extends utils.Adapter {
 			},
 			native: {},
 		});
-		this.setState('balken.STATE', {val: false}, true);
+		this.setState('balken.state', {val: false}, true);
 
 		this.setObjectNotExists('balken.rgb_color', {
 			type: 'state',
