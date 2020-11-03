@@ -101,157 +101,86 @@
 			"native": {}
 		},
 		{
-            "_id": "ledcontrol.meta",
-            "type": "meta",
-            "meta": {
-                "adapter": "ledcontrol",
-                "type": ""
-            },
-            "common": {},
-            "native": {}
-        },
-        {
-            "_id": "ledcontrol.meta.switch",
-            "type": "meta",
-            "parent": "ledcontrol.meta",
-            "meta": {
-                "adapter": "ledcontrol",
-                "type": "fixture"
-            },
-            "common": {
-                "name": "generic switch"
-            },
-            "native": {
-                "channel": {
-                    "type": "channel",
-                    "common": {
-                        "role": "switch"
-                    },
-                    "native": {}
-                },
-                "length": 1,
-                "states": [
-                    {
-                        "type": "state",
-                        "common": {
-                            "role": "switch",
-                            "type": "boolean",
-                            "write": true,
-                            "read": false
-                        },
-                        "native": {
-                            "value_off": 0,
-                            "value_on": 255
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "_id": "ledcontrol.meta.dimmer",
-            "type": "meta",
-            "parent": "ledcontrol.meta",
-            "meta": {
-                "adapter": "ledcontrol",
-                "type": "fixture"
-            },
-            "common": {
-                "name": "generic dimmer"
-            },
-            "native": {
-                "channel": {
-                    "type": "channel",
-                    "common": {
-                        "role": "light.dimmer"
-                    },
-                    "native": {}
-                },
-                "length": 1,
-                "states": [
-                    {
-                        "type": "state",
-                        "common": {
-                            "role": "level.dimmer",
-                            "type": "number",
-                            "min": 0,
-                            "max": 255,
-                            "write": true,
-                            "read": false
-                        },
-                        "native": {}
-                    }
-                ]
-            }
-        },
-        {
-            "_id": "ledcontrol.meta.rgb",
-            "type": "meta",
-            "parent": "ledcontrol.meta",
-            "meta": {
-                "adapter": "ledcontrol",
-                "type": "fixture"
-            },
-            "common": {
-                "name": "generic rgb"
-            },
-            "native": {
-                "channel": {
-                    "type": "channel",
-                    "common": {
-                        "role": "light.rgb"
-                    },
-                    "native": {}
-                },
-                "length": 3,
-                "states": [
-                    {
-                        "type": "state",
-                        "common": {
-                            "role": "level.color.red",
-                            "type": "number",
-                            "min": 0,
-                            "max": 255,
-                            "write": true,
-                            "read": false
-                        },
-                        "native": {}
-                    },
-                    {
-                        "type": "state",
-                        "common": {
-                            "role": "level.color.green",
-                            "type": "number",
-                            "min": 0,
-                            "max": 255,
-                            "write": true,
-                            "read": false
-                        },
-                        "native": {}
-                    },
-                    {
-                        "type": "state",
-                        "common": {
-                            "role": "level.color.blue",
-                            "type": "number",
-                            "min": 0,
-                            "max": 255,
-                            "write": true,
-                            "read": false
-                        },
-                        "native": {}
-                    },
-                    {
-                        "type": "state",
-                        "common": {
-                            "role": "level.color.rgb",
-                            "type": "string",
-                            "write": true,
-                            "read": false
-                        },
-                        "native": {}
-                    }
-                ]
-            }
-        }
+			"_id": "balken",
+			"type": "channel",
+			"common": {
+				"role": "light.color",
+				"name": "balken"
+			},
+			"native": {}
+		},
+		{
+			"_id": "balken.on",
+			"type": "state",
+			"common": {
+				"role": "switch.light",
+				"name": "on",
+				"type": "boolean",
+				"read": true,
+				"write": true,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "balken.bri",
+			"type": "state",
+			"common": {
+				"role": "level.dimmer",
+				"name": "bri",
+				"type": "number",
+				"min": 0,
+				"max": 100,
+				"read": true,
+				"write": true,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "balken.r",
+			"type": "state",
+			"common": {
+				"role": "level.color.red",
+				"name": "r",
+				"type": "number",
+				"min": 0,
+				"max": 255,
+				"read": true,
+				"write": true,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "balken.g",
+			"type": "state",
+			"common": {
+				"role": "level.color.green",
+				"name": "g",
+				"type": "number",
+				"min": 0,
+				"max": 255,
+				"read": true,
+				"write": true,
+				"def": false
+			},
+			"native": {}
+		},
+		{
+			"_id": "balken.b",
+			"type": "state",
+			"common": {
+				"role": "level.color.blue",
+				"name": "b",
+				"type": "number",
+				"min": 0,
+				"max": 255,
+				"read": true,
+				"write": true,
+				"def": false
+			},
+			"native": {}
+		}
 	]
 }
