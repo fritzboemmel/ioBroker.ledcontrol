@@ -76,17 +76,35 @@ class Ledcontrol extends utils.Adapter {
 		});
 
 
+		this.setObjectNotExists('balken.on', {
+			type: 'state',
+			common: {
+				name: 'on',
+				type: 'boolean',
+				role:'dimmer.level',
+				read: true,
+				write: true,
+				smartName: {
+					smartType: "light"
+				}
+			},
+			native: {},
+		});
+		this.setState('balken.brightness', {val: false}, true);
 		
 		this.setObjectNotExists('balken.brightness', {
 			type: 'state',
 			common: {
 				name: 'brightness',
-				type: 'boolean',
+				type: 'number',
 				role:'dimmer.level',
 				min: 0,
 				max: 100,
 				read: true,
 				write: true,
+				smartName: {
+					smartType: "light"
+				}
 			},
 			native: {},
 		});
@@ -96,7 +114,7 @@ class Ledcontrol extends utils.Adapter {
 			type: 'state',
 			common: {
 				name: 'r',
-				type: 'boolean',
+				type: 'number',
 				role:'level.color.red',
 				min: 0,
 				max: 255,
@@ -111,7 +129,7 @@ class Ledcontrol extends utils.Adapter {
 			type: 'state',
 			common: {
 				name: 'g',
-				type: 'boolean',
+				type: 'number',
 				role:'level.color.green',
 				min: 0,
 				max: 255,
@@ -126,7 +144,7 @@ class Ledcontrol extends utils.Adapter {
 			type: 'state',
 			common: {
 				name: 'b',
-				type: 'boolean',
+				type: 'number',
 				role:'level.color.blue',
 				min: 0,
 				max: 255,
