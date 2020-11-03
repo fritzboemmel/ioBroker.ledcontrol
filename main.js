@@ -129,7 +129,7 @@ class Ledcontrol extends utils.Adapter {
 		});
 		this.setState('balken.effect', {val: 'none'}, true);
 
-		this.subscribeStates('balken.state');
+		this.subscribeStates('balken.*');
 
 
 		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
@@ -185,15 +185,15 @@ class Ledcontrol extends utils.Adapter {
 	//  * @param {string} id
 	//  * @param {ioBroker.Object | null | undefined} obj
 	//  */
-	onObjectChange(id, obj) {
-		if (obj) {
-			// The object was changed
-			this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-		} else {
-			// The object was deleted
-			this.log.info(`object ${id} deleted`);
-		}
-	}
+	// onObjectChange(id, obj) {
+	// 	if (obj) {
+	// 		// The object was changed
+	// 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
+	// 	} else {
+	// 		// The object was deleted
+	// 		this.log.info(`object ${id} deleted`);
+	// 	}
+	// }
 
 	/**
 	 * Is called if a subscribed state changes
