@@ -110,7 +110,7 @@
 			"native": {}
 		},
 		{
-			"_id": "0",
+			"_id": 0,
 			"type": "channel",
 			"common": {
 				"role": "light.color",
