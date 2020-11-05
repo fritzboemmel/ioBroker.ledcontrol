@@ -170,29 +170,29 @@ class Ledcontrol extends utils.Adapter {
 			case 'on':
 				this.toggle = state;
 				if (this.toggle) {
-					this.controller?.setColor(this.color, (res) => {});
+					this.controller.setColor(this.color, (res) => {});
 				}
 				break;
 			case 'bri':
 				this.bri = state;
-				this.controller?.setBrightness(this.bri, (res) => {});
+				this.controller.setBrightness(this.bri, (res) => {});
 				break;
 			case 'r':
 				this.color[0] = state;
 				if (this.toggle) {
-					this.controller?.setColor(this.color, (res) => {});
+					this.controller.setColor(this.color, (res) => {});
 				}
 				break;
 			case 'g':
 				this.color[1] = state;
 				if (this.toggle) {
-					this.controller?.setColor(this.color, (res) => {});
+					this.controller.setColor(this.color, (res) => {});
 				}
 				break;
 			case 'b':
 				this.color[2] = state;
 				if (this.toggle) {
-					this.controller?.setColor(this.color, (res) => {});
+					this.controller.setColor(this.color, (res) => {});
 				}
 				break;
 		}
