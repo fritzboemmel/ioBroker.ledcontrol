@@ -166,6 +166,7 @@ class Ledcontrol extends utils.Adapter {
 	control(id, state) {
 		var tmp = id.split('.');
 		var realID = tmp.pop();
+		this.log.info(`realID: ${realID}`);
 		switch (realID) {
 			case 'on':
 				this.toggle = state;
