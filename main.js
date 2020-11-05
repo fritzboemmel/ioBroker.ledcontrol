@@ -198,6 +198,8 @@ class Ledcontrol extends utils.Adapter {
 					this.controller.setColor(this.color, (res) => {});
 				}
 				break;
+			default:
+				this.log.info(`id: ${id}, realID: ${realID}, state: ${state}`);
 		}
 	}
 
