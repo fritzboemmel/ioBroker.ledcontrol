@@ -202,6 +202,7 @@ class Ledcontrol extends utils.Adapter {
 			default:
 				this.log.info(`id: ${id}, realID: ${realID}, state: ${state}`);
 		}
+		this.log.info(`on: ${this.toggle}, brighness: ${this.bri}, color: ${this.color}`);
 	}
 
 	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
