@@ -28,6 +28,10 @@ class Ledcontrol extends utils.Adapter {
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
+
+		this.toggle = false;
+		this.bri = 100;
+		this.color = [255, 255, 255];
 	}
 
 	/**
@@ -82,6 +86,8 @@ class Ledcontrol extends utils.Adapter {
 		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
 		// this.subscribeStates('*');
 
+		this.subscribeStates('balken.*');
+
 		/*
 			setState examples
 			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
@@ -122,6 +128,8 @@ class Ledcontrol extends utils.Adapter {
 		}
 	}
 
+
+
 	// If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
 	// You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
 	// /**
@@ -148,9 +156,45 @@ class Ledcontrol extends utils.Adapter {
 		if (state) {
 			// The state was changed
 			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			this.control(id, state);
 		} else {
 			// The state was deleted
 			this.log.info(`state ${id} deleted`);
+		}
+	}
+
+	control(id, state) {
+		var tmp = id.split('.');
+		var realID = tmp.pop();
+		switch (realID) {
+			case 'on':
+				this.toggle = state;
+				if (this.toggle) {
+					this.controller?.setColor(this.color, (res) => {});
+				}
+				break;
+			case 'bri':
+				this.bri = state;
+				this.controller?.setBrightness(this.bri, (res) => {});
+				break;
+			case 'r':
+				this.color[0] = state;
+				if (this.toggle) {
+					this.controller?.setColor(this.color, (res) => {});
+				}
+				break;
+			case 'g':
+				this.color[1] = state;
+				if (this.toggle) {
+					this.controller?.setColor(this.color, (res) => {});
+				}
+				break;
+			case 'b':
+				this.color[2] = state;
+				if (this.toggle) {
+					this.controller?.setColor(this.color, (res) => {});
+				}
+				break;
 		}
 	}
 
@@ -227,11 +271,18 @@ class Controller {
 	}
 
 	setColor(color=[255, 255, 255], callback) {
-        var c = {'red':color[0], 'green':color[1], 'blue':color[2]};
-        this.httpRequest('POST', '/api/full_color', JSON.stringify(c), (res) => {
+        var data = {'red':color[0], 'green':color[1], 'blue':color[2]};
+        this.httpRequest('POST', '/api/full_color', JSON.stringify(data), (res) => {
             callback(res);
         });
-    }
+	}
+	
+	setBrightness(brightness=100, callback) {
+		var data = {'brightness':brightness};
+		this.httpRequest('POST', '/api/brightness', JSON.stringify(data), (res) => {
+			callback(res);
+		})
+	}
 }
 
 // @ts-ignore parent is a valid property on module
