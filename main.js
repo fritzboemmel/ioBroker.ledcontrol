@@ -169,7 +169,7 @@ class Ledcontrol extends utils.Adapter {
 		this.log.info(`realID: ${realID}`);
 		switch (realID) {
 			case 'on':
-				this.toggle = Boolean(state);
+				this.toggle = state.val;
 				if (this.toggle) {
 					this.controller.setColor(this.color, (res) => {});
 				}
@@ -178,23 +178,23 @@ class Ledcontrol extends utils.Adapter {
 				}
 				break;
 			case 'bri':
-				this.bri = parseInt(state);
+				this.bri = state.val;
 				this.controller.setBrightness(this.bri, (res) => {});
 				break;
 			case 'r':
-				this.color[0] = parseInt(state);
+				this.color[0] = state.val;
 				if (this.toggle) {
 					this.controller.setColor(this.color, (res) => {});
 				}
 				break;
 			case 'g':
-				this.color[1] = parseInt(state);
+				this.color[1] = state.val;
 				if (this.toggle) {
 					this.controller.setColor(this.color, (res) => {});
 				}
 				break;
 			case 'b':
-				this.color[2] = parseInt(state);
+				this.color[2] = state.val;
 				if (this.toggle) {
 					this.controller.setColor(this.color, (res) => {});
 				}
