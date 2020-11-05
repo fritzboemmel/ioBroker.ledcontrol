@@ -172,6 +172,9 @@ class Ledcontrol extends utils.Adapter {
 				if (this.toggle) {
 					this.controller.setColor(this.color, (res) => {});
 				}
+				else {
+					this.controller.turnOff((res) => {});
+				}
 				break;
 			case 'bri':
 				this.bri = state;
@@ -280,6 +283,12 @@ class Controller {
 	setBrightness(brightness=100, callback) {
 		var data = {'brightness':brightness};
 		this.httpRequest('POST', '/api/brightness', JSON.stringify(data), (res) => {
+			callback(res);
+		})
+	}
+
+	turnOff(callback) {
+		this.httpRequest('POST', '/api/clear', '', (res) => {
 			callback(res);
 		})
 	}
